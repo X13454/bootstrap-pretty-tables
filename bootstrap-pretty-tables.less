@@ -1,0 +1,323 @@
+/* Flat UI Colors variables */
+@yc-colors-turquoise: #1abc9c;
+@yc-colors-green-sea: #16a085;
+@yc-colors-emerald: #2ecc71;
+@yc-colors-nephritis: #27ae60;
+@yc-colors-peter-river: #3498db;
+@yc-colors-belize-hole: #2980b9;
+@yc-colors-amethyst: #9b59b6;
+@yc-colors-wisteria: #8e44ad;
+@yc-colors-wet-asphalt: #34495e;
+@yc-colors-midnight-blue: #2c3e50;
+@yc-colors-sun-flower: #f1c40f;
+@yc-colors-orange: #f39c12;
+@yc-colors-carrot: #e67e22;
+@yc-colors-pumpkin: #d35400;
+@yc-colors-alizarin: #e74c3c;
+@yc-colors-pomegranate: #c0392b;
+@yc-colors-clouds: #ecf0f1;
+@yc-colors-silver: #bdc3c7;
+@yc-colors-concrete: #95a5a6;
+@yc-colors-asbestos: #7f8c8d;
+
+@yc-colors-peter-river-light: lighten(@yc-colors-peter-river, 20%);
+@yc-colors-peter-river-lighter: lighten(@yc-colors-peter-river, 33.5%);
+
+@yc-colors-wet-asphalt-light: lighten(@yc-colors-wet-asphalt, 20%);
+@yc-colors-wet-asphalt-lighter: lighten(@yc-colors-wet-asphalt, 33.5%);
+
+@yc-colors-alizarin-light: lighten(@yc-colors-alizarin, 20%);
+@yc-colors-alizarin-lighter: lighten(@yc-colors-alizarin, 33.5%);
+
+@yc-colors-sun-flower-light: lighten(@yc-colors-sun-flower, 20%);
+@yc-colors-sun-flower-lighter: lighten(@yc-colors-sun-flower, 33.5%);
+
+@yc-colors-emerald-light: lighten(@yc-colors-emerald, 20%);
+@yc-colors-emerald-lighter: lighten(@yc-colors-emerald, 33.5%);
+
+@yc-colors-carrot-light: lighten(@yc-colors-carrot, 20%);
+@yc-colors-carrot-lighter: lighten(@yc-colors-carrot, 33.5%);
+
+@yc-colors-amethyst-light: lighten(@yc-colors-amethyst, 35%);
+@yc-colors-amethyst-lighter: lighten(@yc-colors-amethyst, 40%);
+
+// Bootstrap uses .table
+// Yoochart uses .yoochart-table
+
+// FROM BOOTSTRAP 3.3.7
+
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+td,
+th {
+  padding: 0;
+}
+
+thead {
+    display: table-header-group;
+  }
+
+tr,
+img {
+    page-break-inside: avoid;
+}
+
+thead {
+    display: table-header-group;
+  }
+
+table.yoochart-table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 20px;
+  
+  // not in BS
+  //border-collapse: separate;
+  border: 1px solid transparent;
+  // /not in BS
+  
+  // Cells
+  > thead,
+  > tbody,
+  > tfoot {
+    > tr {
+      > th,
+      > td {
+        padding: 8px;
+        line-height: 1.42857143;
+        vertical-align: top;
+        // border-top: 1px solid @table-border-color;
+        // border: 1px solid transparent; // @table-border-color --> transparent
+      }
+    }
+  }
+  // Bottom align for column headings
+  > thead > tr > th {
+    vertical-align: bottom;
+    // border-bottom: 2px solid transparent; // @table-border-color --> transparent
+  }
+  // Remove top border from thead by default
+  > caption + thead,
+  > colgroup + thead,
+  > thead:first-child {
+    > tr:first-child {
+      > th,
+      > td {
+        // border-top: 0;
+      }
+    }
+  }
+  // Account for multiple tbody instances
+  > tbody + tbody {
+    // border-top: 2px solid @table-border-color;
+  }
+
+  // Nesting
+  .table {
+    // background-color: @body-bg;
+  }
+} // /FROM BOOTSTRAP 3.3.7
+
+
+.yoochart-nested-mixin-1(@x, @y, @z)  {
+    > thead {
+        > tr {
+            th,
+            td {
+              color: white; /* added, same method as .table-striped/.table-hover to colorize the background. */
+              background-color: @x;
+              border: 1px solid @x;
+              text-align: center;
+            }/*
+            th:nth-child(1),
+            td:nth-child(1) {
+              border-left: 1px solid @x;
+            }*/
+        }
+    }
+    // 26/01/2017 - Helper: allows to have the same table height otherwise the cells don't have borders.
+     > tbody {
+         > tr:nth-child(1n + 2) > td { 
+            // 26/01/2017 - Helper: nth-child(1n + 2) matches 2,3,4,...
+            // 26/01/2017 - Helper: not applicable to left and right because borders are done like that _|_ which leaves a black hole.
+            border-top: 1px solid transparent;
+            border-bottom: 1px solid transparent;
+         }
+     }
+     // 26/01/2017 - Helper: allows to display the same width with or without vertical borders --> compensate with 1 padding.
+    &.yoochart-table-expanded {
+     > thead,
+     > tbody, 
+     > tfoot {
+          > tr {
+            > th,
+            > td {
+                  padding: 12px;
+              }
+          }
+     }
+    }
+
+  &.yoochart-table-column-border-on {
+        > tbody {
+            > tr > td:nth-child(1n + 2) {
+              // nth-child(1n + 2) matches 2,3,4,...
+              border-left: 1px solid @x;
+              border-right: 1px solid @x;
+            } 
+            > tr > td:last-child {
+              border-right: 1px solid transparent;
+            } 
+        }
+   }
+    // 26/01/2017 - Helper: allows to display the line at the outter right when we have those 2 classes.
+  &.yoochart-table-column-border-on.yoochart-table-bordered {
+        > tbody {
+            > tr > td:last-child {
+              border-right: 1px solid @x;
+            } 
+        }
+   }
+
+  &.yoochart-table-column-border-on:not(*:root) {
+   //> thead, // 06/02/2017 - Helper: Required otherwise behavior not consistant on Google Chrome.
+   > tbody, 
+   > tfoot {
+        > tr {
+          // 06/02/2017 - Helper: required otherwise :not(*:root) above still applies instead of the first line above.
+          > th + th,
+          > td + td {
+              padding-left: 7px; // 05/02/2017 - Helper: if column-border-on, goes back to 7 instead of 8px.
+          }
+        }
+   }    
+  }
+
+  // 26/01/2017 - Helper: allows to display the same width with or without vertical borders -->  reset to original padding.
+  &.yoochart-table-column-border-on.yoochart-table-expanded:not(*:root) {
+   //> thead, // 06/02/2017 - Helper: Required otherwise behavior not consistant on Google Chrome.
+   > tbody, 
+   > tfoot {
+        > tr {
+          // 06/02/2017 - Helper: required otherwise :not(*:root) above still applies instead of the first line above.
+          > th + th,
+          > td + td {
+              padding-left: 11px; // 05/02/2017 - Helper: if column-border-on, goes back to 11px instead of 12px.
+          }
+        }
+   }    
+  }
+   &.yoochart-table-line-border-on {
+       > tbody {
+           > tr:nth-child(1n + 2) > td { 
+              // 26/01/2017 - nth-child(1n + 2) matches 2,3,4,...
+              border-top: 1px solid @x;
+              border-bottom: 1px solid @x;
+           }
+           > tr:last-child > td { 
+              border-bottom: 1px solid transparent;
+           }
+       }
+   }
+   // 26/01/2017 - Helper:  allows to display the line at the outter bottom when we have those 2 classes.
+   &.yoochart-table-line-border-on.yoochart-table-bordered {
+       > tbody {
+           > tr:last-child > td { 
+              border-bottom: 1px solid @x;
+           }
+       }
+   }
+    
+    &.yoochart-table-striped {
+        > tbody {
+            > tr:nth-child(odd) {
+              > td {
+                background-color: @z;
+              }
+              // 26/01/2017 - Helper: As the header always has borders, the table must always have borders, even when not bordered.
+              > td:first-child {
+                border-left: 1px solid @z;
+              }
+            }
+        }
+    }
+    
+    &.yoochart-table-striped.yoochart-table-bordered {
+        > tbody {
+            // 26/01/2017 - Helper: remove the pale border when the table is bordered to put the appropriate border.
+            > tr:nth-child(odd) > td:first-child {
+              border-left: 1px solid @x;
+            }
+            // 26/01/2017 - Helper: put again the border which is transparent by default at the beginning of this mixin.
+            > tr:last-child {
+              > td {
+                border-bottom: 1px solid @x;
+              }
+            }
+        }
+    }
+    &.yoochart-table-hover {
+        > tbody {
+            > tr:hover > td {
+              background-color: @y; /* to overwrite bs 3 .table-hover. */
+              //border-top: 1px solid @x; /* the background darkens hence the borders too. */
+            }
+            > tr:hover > td:nth-child(n + 2) { 
+               //border-left: 1px solid @x; /* the background darkens hence the borders too. */
+            }
+            > tr:hover > td:first-child { 
+               border-left: 1px solid @y; /* the border darkens to the color of the hover. */
+            }
+            > tr:hover + tr > td {
+              //border-top: 1px solid @x; /* the background darkens hence the borders too. */
+            } 
+        }
+    }
+    // 26/01/2017 - Helper: remove the pale border when the table is bordered to put the darkest color.
+    &.yoochart-table-hover.yoochart-table-bordered {
+        > tbody {
+            > tr:hover > td:first-child { 
+               border-left: 1px solid @x; /* the border darkens to the color of the hover. */
+            }
+        }
+    }
+    &.yoochart-table-bordered {
+      border: 1px solid @x;
+
+       tbody > tr:last-child > td { 
+          border-bottom: 1px solid @x;
+       }
+    }
+}
+
+/* ** ** ** ** ** */
+table.yoochart-table-amethyst {
+   .yoochart-nested-mixin-1(@yc-colors-amethyst, @yc-colors-amethyst-light, @yc-colors-amethyst-lighter)
+}
+
+table.yoochart-table-peter-river {
+   .yoochart-nested-mixin-1(@yc-colors-peter-river, @yc-colors-peter-river-light, @yc-colors-peter-river-lighter)
+}
+
+table.yoochart-table-wet-asphalt {
+   .yoochart-nested-mixin-1(@yc-colors-wet-asphalt, @yc-colors-wet-asphalt-light, @yc-colors-wet-asphalt-lighter)
+}
+
+table.yoochart-table-alizarin {
+   .yoochart-nested-mixin-1(@yc-colors-alizarin, @yc-colors-alizarin-light, @yc-colors-alizarin-lighter)
+}
+
+table.yoochart-table-sun-flower {
+   .yoochart-nested-mixin-1(@yc-colors-sun-flower, @yc-colors-sun-flower-light, @yc-colors-sun-flower-lighter)
+}
+
+table.yoochart-table-emerald {
+   .yoochart-nested-mixin-1(@yc-colors-emerald, @yc-colors-emerald-light, @yc-colors-emerald-lighter)
+}
+
+table.yoochart-table-carrot {
+   .yoochart-nested-mixin-1(@yc-colors-carrot, @yc-colors-carrot-light, @yc-colors-carrot-lighter)
+}

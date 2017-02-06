@@ -1,0 +1,1208 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>bootstrap-pretty-tables demo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexboxgrid/6.3.1/flexboxgrid.min.css" type="text/css">
+
+<style>
+/* Flat UI Colors variables */
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+td,
+th {
+  padding: 0;
+}
+thead {
+  display: table-header-group;
+}
+tr,
+img {
+  page-break-inside: avoid;
+}
+thead {
+  display: table-header-group;
+}
+table.yoochart-table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+}
+table.yoochart-table > thead > tr > th,
+table.yoochart-table > tbody > tr > th,
+table.yoochart-table > tfoot > tr > th,
+table.yoochart-table > thead > tr > td,
+table.yoochart-table > tbody > tr > td,
+table.yoochart-table > tfoot > tr > td {
+  padding: 8px;
+  line-height: 1.42857143;
+  vertical-align: top;
+}
+table.yoochart-table > thead > tr > th {
+  vertical-align: bottom;
+}
+/* ** ** ** ** ** */
+table.yoochart-table-amethyst > thead > tr {
+  /*
+            th:nth-child(1),
+            td:nth-child(1) {
+              border-left: 1px solid @x;
+            }*/
+}
+table.yoochart-table-amethyst > thead > tr th,
+table.yoochart-table-amethyst > thead > tr td {
+  color: white;
+  /* added, same method as .table-striped/.table-hover to colorize the background. */
+  background-color: #9b59b6;
+  border: 1px solid #9b59b6;
+  text-align: center;
+}
+table.yoochart-table-amethyst > tbody > tr:nth-child(1n + 2) > td {
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+}
+table.yoochart-table-amethyst.yoochart-table-expanded > thead > tr > th,
+table.yoochart-table-amethyst.yoochart-table-expanded > tbody > tr > th,
+table.yoochart-table-amethyst.yoochart-table-expanded > tfoot > tr > th,
+table.yoochart-table-amethyst.yoochart-table-expanded > thead > tr > td,
+table.yoochart-table-amethyst.yoochart-table-expanded > tbody > tr > td,
+table.yoochart-table-amethyst.yoochart-table-expanded > tfoot > tr > td {
+  padding: 12px;
+}
+table.yoochart-table-amethyst.yoochart-table-column-border-on > tbody > tr > td:nth-child(1n + 2) {
+  border-left: 1px solid #9b59b6;
+  border-right: 1px solid #9b59b6;
+}
+table.yoochart-table-amethyst.yoochart-table-column-border-on > tbody > tr > td:last-child {
+  border-right: 1px solid transparent;
+}
+table.yoochart-table-amethyst.yoochart-table-column-border-on.yoochart-table-bordered > tbody > tr > td:last-child {
+  border-right: 1px solid #9b59b6;
+}
+table.yoochart-table-amethyst.yoochart-table-column-border-on:not(*:root) > tbody > tr > th + th,
+table.yoochart-table-amethyst.yoochart-table-column-border-on:not(*:root) > tfoot > tr > th + th,
+table.yoochart-table-amethyst.yoochart-table-column-border-on:not(*:root) > tbody > tr > td + td,
+table.yoochart-table-amethyst.yoochart-table-column-border-on:not(*:root) > tfoot > tr > td + td {
+  padding-left: 7px;
+}
+table.yoochart-table-amethyst.yoochart-table-column-border-on.yoochart-table-expanded:not(*:root) > tbody > tr > th + th,
+table.yoochart-table-amethyst.yoochart-table-column-border-on.yoochart-table-expanded:not(*:root) > tfoot > tr > th + th,
+table.yoochart-table-amethyst.yoochart-table-column-border-on.yoochart-table-expanded:not(*:root) > tbody > tr > td + td,
+table.yoochart-table-amethyst.yoochart-table-column-border-on.yoochart-table-expanded:not(*:root) > tfoot > tr > td + td {
+  padding-left: 11px;
+}
+table.yoochart-table-amethyst.yoochart-table-line-border-on > tbody > tr:nth-child(1n + 2) > td {
+  border-top: 1px solid #9b59b6;
+  border-bottom: 1px solid #9b59b6;
+}
+table.yoochart-table-amethyst.yoochart-table-line-border-on > tbody > tr:last-child > td {
+  border-bottom: 1px solid transparent;
+}
+table.yoochart-table-amethyst.yoochart-table-line-border-on.yoochart-table-bordered > tbody > tr:last-child > td {
+  border-bottom: 1px solid #9b59b6;
+}
+table.yoochart-table-amethyst.yoochart-table-striped > tbody > tr:nth-child(odd) > td {
+  background-color: #f0e7f4;
+}
+table.yoochart-table-amethyst.yoochart-table-striped > tbody > tr:nth-child(odd) > td:first-child {
+  border-left: 1px solid #f0e7f4;
+}
+table.yoochart-table-amethyst.yoochart-table-striped.yoochart-table-bordered > tbody > tr:nth-child(odd) > td:first-child {
+  border-left: 1px solid #9b59b6;
+}
+table.yoochart-table-amethyst.yoochart-table-striped.yoochart-table-bordered > tbody > tr:last-child > td {
+  border-bottom: 1px solid #9b59b6;
+}
+table.yoochart-table-amethyst.yoochart-table-hover > tbody > tr:hover > td {
+  background-color: #e6d5ed;
+  /* to overwrite bs 3 .table-hover. */
+}
+table.yoochart-table-amethyst.yoochart-table-hover > tbody > tr:hover > td:first-child {
+  border-left: 1px solid #e6d5ed;
+  /* the border darkens to the color of the hover. */
+}
+table.yoochart-table-amethyst.yoochart-table-hover.yoochart-table-bordered > tbody > tr:hover > td:first-child {
+  border-left: 1px solid #9b59b6;
+  /* the border darkens to the color of the hover. */
+}
+table.yoochart-table-amethyst.yoochart-table-bordered {
+  border: 1px solid #9b59b6;
+}
+table.yoochart-table-amethyst.yoochart-table-bordered tbody > tr:last-child > td {
+  border-bottom: 1px solid #9b59b6;
+}
+table.yoochart-table-peter-river > thead > tr {
+  /*
+            th:nth-child(1),
+            td:nth-child(1) {
+              border-left: 1px solid @x;
+            }*/
+}
+table.yoochart-table-peter-river > thead > tr th,
+table.yoochart-table-peter-river > thead > tr td {
+  color: white;
+  /* added, same method as .table-striped/.table-hover to colorize the background. */
+  background-color: #3498db;
+  border: 1px solid #3498db;
+  text-align: center;
+}
+table.yoochart-table-peter-river > tbody > tr:nth-child(1n + 2) > td {
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+}
+table.yoochart-table-peter-river.yoochart-table-expanded > thead > tr > th,
+table.yoochart-table-peter-river.yoochart-table-expanded > tbody > tr > th,
+table.yoochart-table-peter-river.yoochart-table-expanded > tfoot > tr > th,
+table.yoochart-table-peter-river.yoochart-table-expanded > thead > tr > td,
+table.yoochart-table-peter-river.yoochart-table-expanded > tbody > tr > td,
+table.yoochart-table-peter-river.yoochart-table-expanded > tfoot > tr > td {
+  padding: 12px;
+}
+table.yoochart-table-peter-river.yoochart-table-column-border-on > tbody > tr > td:nth-child(1n + 2) {
+  border-left: 1px solid #3498db;
+  border-right: 1px solid #3498db;
+}
+table.yoochart-table-peter-river.yoochart-table-column-border-on > tbody > tr > td:last-child {
+  border-right: 1px solid transparent;
+}
+table.yoochart-table-peter-river.yoochart-table-column-border-on.yoochart-table-bordered > tbody > tr > td:last-child {
+  border-right: 1px solid #3498db;
+}
+table.yoochart-table-peter-river.yoochart-table-column-border-on:not(*:root) > tbody > tr > th + th,
+table.yoochart-table-peter-river.yoochart-table-column-border-on:not(*:root) > tfoot > tr > th + th,
+table.yoochart-table-peter-river.yoochart-table-column-border-on:not(*:root) > tbody > tr > td + td,
+table.yoochart-table-peter-river.yoochart-table-column-border-on:not(*:root) > tfoot > tr > td + td {
+  padding-left: 7px;
+}
+table.yoochart-table-peter-river.yoochart-table-column-border-on.yoochart-table-expanded:not(*:root) > tbody > tr > th + th,
+table.yoochart-table-peter-river.yoochart-table-column-border-on.yoochart-table-expanded:not(*:root) > tfoot > tr > th + th,
+table.yoochart-table-peter-river.yoochart-table-column-border-on.yoochart-table-expanded:not(*:root) > tbody > tr > td + td,
+table.yoochart-table-peter-river.yoochart-table-column-border-on.yoochart-table-expanded:not(*:root) > tfoot > tr > td + td {
+  padding-left: 11px;
+}
+table.yoochart-table-peter-river.yoochart-table-line-border-on > tbody > tr:nth-child(1n + 2) > td {
+  border-top: 1px solid #3498db;
+  border-bottom: 1px solid #3498db;
+}
+table.yoochart-table-peter-river.yoochart-table-line-border-on > tbody > tr:last-child > td {
+  border-bottom: 1px solid transparent;
+}
+table.yoochart-table-peter-river.yoochart-table-line-border-on.yoochart-table-bordered > tbody > tr:last-child > td {
+  border-bottom: 1px solid #3498db;
+}
+table.yoochart-table-peter-river.yoochart-table-striped > tbody > tr:nth-child(odd) > td {
+  background-color: #c5e2f5;
+}
+table.yoochart-table-peter-river.yoochart-table-striped > tbody > tr:nth-child(odd) > td:first-child {
+  border-left: 1px solid #c5e2f5;
+}
+table.yoochart-table-peter-river.yoochart-table-striped.yoochart-table-bordered > tbody > tr:nth-child(odd) > td:first-child {
+  border-left: 1px solid #3498db;
+}
+table.yoochart-table-peter-river.yoochart-table-striped.yoochart-table-bordered > tbody > tr:last-child > td {
+  border-bottom: 1px solid #3498db;
+}
+table.yoochart-table-peter-river.yoochart-table-hover > tbody > tr:hover > td {
+  background-color: #8bc4ea;
+  /* to overwrite bs 3 .table-hover. */
+}
+table.yoochart-table-peter-river.yoochart-table-hover > tbody > tr:hover > td:first-child {
+  border-left: 1px solid #8bc4ea;
+  /* the border darkens to the color of the hover. */
+}
+table.yoochart-table-peter-river.yoochart-table-hover.yoochart-table-bordered > tbody > tr:hover > td:first-child {
+  border-left: 1px solid #3498db;
+  /* the border darkens to the color of the hover. */
+}
+table.yoochart-table-peter-river.yoochart-table-bordered {
+  border: 1px solid #3498db;
+}
+table.yoochart-table-peter-river.yoochart-table-bordered tbody > tr:last-child > td {
+  border-bottom: 1px solid #3498db;
+}
+table.yoochart-table-wet-asphalt > thead > tr {
+  /*
+            th:nth-child(1),
+            td:nth-child(1) {
+              border-left: 1px solid @x;
+            }*/
+}
+table.yoochart-table-wet-asphalt > thead > tr th,
+table.yoochart-table-wet-asphalt > thead > tr td {
+  color: white;
+  /* added, same method as .table-striped/.table-hover to colorize the background. */
+  background-color: #34495e;
+  border: 1px solid #34495e;
+  text-align: center;
+}
+table.yoochart-table-wet-asphalt > tbody > tr:nth-child(1n + 2) > td {
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+}
+table.yoochart-table-wet-asphalt.yoochart-table-expanded > thead > tr > th,
+table.yoochart-table-wet-asphalt.yoochart-table-expanded > tbody > tr > th,
+table.yoochart-table-wet-asphalt.yoochart-table-expanded > tfoot > tr > th,
+table.yoochart-table-wet-asphalt.yoochart-table-expanded > thead > tr > td,
+table.yoochart-table-wet-asphalt.yoochart-table-expanded > tbody > tr > td,
+table.yoochart-table-wet-asphalt.yoochart-table-expanded > tfoot > tr > td {
+  padding: 12px;
+}
+table.yoochart-table-wet-asphalt.yoochart-table-column-border-on > tbody > tr > td:nth-child(1n + 2) {
+  border-left: 1px solid #34495e;
+  border-right: 1px solid #34495e;
+}
+table.yoochart-table-wet-asphalt.yoochart-table-column-border-on > tbody > tr > td:last-child {
+  border-right: 1px solid transparent;
+}
+table.yoochart-table-wet-asphalt.yoochart-table-column-border-on.yoochart-table-bordered > tbody > tr > td:last-child {
+  border-right: 1px solid #34495e;
+}
+table.yoochart-table-wet-asphalt.yoochart-table-column-border-on:not(*:root) > tbody > tr > th + th,
+table.yoochart-table-wet-asphalt.yoochart-table-column-border-on:not(*:root) > tfoot > tr > th + th,
+table.yoochart-table-wet-asphalt.yoochart-table-column-border-on:not(*:root) > tbody > tr > td + td,
+table.yoochart-table-wet-asphalt.yoochart-table-column-border-on:not(*:root) > tfoot > tr > td + td {
+  padding-left: 7px;
+}
+table.yoochart-table-wet-asphalt.yoochart-table-column-border-on.yoochart-table-expanded:not(*:root) > tbody > tr > th + th,
+table.yoochart-table-wet-asphalt.yoochart-table-column-border-on.yoochart-table-expanded:not(*:root) > tfoot > tr > th + th,
+table.yoochart-table-wet-asphalt.yoochart-table-column-border-on.yoochart-table-expanded:not(*:root) > tbody > tr > td + td,
+table.yoochart-table-wet-asphalt.yoochart-table-column-border-on.yoochart-table-expanded:not(*:root) > tfoot > tr > td + td {
+  padding-left: 11px;
+}
+table.yoochart-table-wet-asphalt.yoochart-table-line-border-on > tbody > tr:nth-child(1n + 2) > td {
+  border-top: 1px solid #34495e;
+  border-bottom: 1px solid #34495e;
+}
+table.yoochart-table-wet-asphalt.yoochart-table-line-border-on > tbody > tr:last-child > td {
+  border-bottom: 1px solid transparent;
+}
+table.yoochart-table-wet-asphalt.yoochart-table-line-border-on.yoochart-table-bordered > tbody > tr:last-child > td {
+  border-bottom: 1px solid #34495e;
+}
+table.yoochart-table-wet-asphalt.yoochart-table-striped > tbody > tr:nth-child(odd) > td {
+  background-color: #839eba;
+}
+table.yoochart-table-wet-asphalt.yoochart-table-striped > tbody > tr:nth-child(odd) > td:first-child {
+  border-left: 1px solid #839eba;
+}
+table.yoochart-table-wet-asphalt.yoochart-table-striped.yoochart-table-bordered > tbody > tr:nth-child(odd) > td:first-child {
+  border-left: 1px solid #34495e;
+}
+table.yoochart-table-wet-asphalt.yoochart-table-striped.yoochart-table-bordered > tbody > tr:last-child > td {
+  border-bottom: 1px solid #34495e;
+}
+table.yoochart-table-wet-asphalt.yoochart-table-hover > tbody > tr:hover > td {
+  background-color: #587ca0;
+  /* to overwrite bs 3 .table-hover. */
+}
+table.yoochart-table-wet-asphalt.yoochart-table-hover > tbody > tr:hover > td:first-child {
+  border-left: 1px solid #587ca0;
+  /* the border darkens to the color of the hover. */
+}
+table.yoochart-table-wet-asphalt.yoochart-table-hover.yoochart-table-bordered > tbody > tr:hover > td:first-child {
+  border-left: 1px solid #34495e;
+  /* the border darkens to the color of the hover. */
+}
+table.yoochart-table-wet-asphalt.yoochart-table-bordered {
+  border: 1px solid #34495e;
+}
+table.yoochart-table-wet-asphalt.yoochart-table-bordered tbody > tr:last-child > td {
+  border-bottom: 1px solid #34495e;
+}
+table.yoochart-table-alizarin > thead > tr {
+  /*
+            th:nth-child(1),
+            td:nth-child(1) {
+              border-left: 1px solid @x;
+            }*/
+}
+table.yoochart-table-alizarin > thead > tr th,
+table.yoochart-table-alizarin > thead > tr td {
+  color: white;
+  /* added, same method as .table-striped/.table-hover to colorize the background. */
+  background-color: #e74c3c;
+  border: 1px solid #e74c3c;
+  text-align: center;
+}
+table.yoochart-table-alizarin > tbody > tr:nth-child(1n + 2) > td {
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+}
+table.yoochart-table-alizarin.yoochart-table-expanded > thead > tr > th,
+table.yoochart-table-alizarin.yoochart-table-expanded > tbody > tr > th,
+table.yoochart-table-alizarin.yoochart-table-expanded > tfoot > tr > th,
+table.yoochart-table-alizarin.yoochart-table-expanded > thead > tr > td,
+table.yoochart-table-alizarin.yoochart-table-expanded > tbody > tr > td,
+table.yoochart-table-alizarin.yoochart-table-expanded > tfoot > tr > td {
+  padding: 12px;
+}
+table.yoochart-table-alizarin.yoochart-table-column-border-on > tbody > tr > td:nth-child(1n + 2) {
+  border-left: 1px solid #e74c3c;
+  border-right: 1px solid #e74c3c;
+}
+table.yoochart-table-alizarin.yoochart-table-column-border-on > tbody > tr > td:last-child {
+  border-right: 1px solid transparent;
+}
+table.yoochart-table-alizarin.yoochart-table-column-border-on.yoochart-table-bordered > tbody > tr > td:last-child {
+  border-right: 1px solid #e74c3c;
+}
+table.yoochart-table-alizarin.yoochart-table-column-border-on:not(*:root) > tbody > tr > th + th,
+table.yoochart-table-alizarin.yoochart-table-column-border-on:not(*:root) > tfoot > tr > th + th,
+table.yoochart-table-alizarin.yoochart-table-column-border-on:not(*:root) > tbody > tr > td + td,
+table.yoochart-table-alizarin.yoochart-table-column-border-on:not(*:root) > tfoot > tr > td + td {
+  padding-left: 7px;
+}
+table.yoochart-table-alizarin.yoochart-table-column-border-on.yoochart-table-expanded:not(*:root) > tbody > tr > th + th,
+table.yoochart-table-alizarin.yoochart-table-column-border-on.yoochart-table-expanded:not(*:root) > tfoot > tr > th + th,
+table.yoochart-table-alizarin.yoochart-table-column-border-on.yoochart-table-expanded:not(*:root) > tbody > tr > td + td,
+table.yoochart-table-alizarin.yoochart-table-column-border-on.yoochart-table-expanded:not(*:root) > tfoot > tr > td + td {
+  padding-left: 11px;
+}
+table.yoochart-table-alizarin.yoochart-table-line-border-on > tbody > tr:nth-child(1n + 2) > td {
+  border-top: 1px solid #e74c3c;
+  border-bottom: 1px solid #e74c3c;
+}
+table.yoochart-table-alizarin.yoochart-table-line-border-on > tbody > tr:last-child > td {
+  border-bottom: 1px solid transparent;
+}
+table.yoochart-table-alizarin.yoochart-table-line-border-on.yoochart-table-bordered > tbody > tr:last-child > td {
+  border-bottom: 1px solid #e74c3c;
+}
+table.yoochart-table-alizarin.yoochart-table-striped > tbody > tr:nth-child(odd) > td {
+  background-color: #fad8d4;
+}
+table.yoochart-table-alizarin.yoochart-table-striped > tbody > tr:nth-child(odd) > td:first-child {
+  border-left: 1px solid #fad8d4;
+}
+table.yoochart-table-alizarin.yoochart-table-striped.yoochart-table-bordered > tbody > tr:nth-child(odd) > td:first-child {
+  border-left: 1px solid #e74c3c;
+}
+table.yoochart-table-alizarin.yoochart-table-striped.yoochart-table-bordered > tbody > tr:last-child > td {
+  border-bottom: 1px solid #e74c3c;
+}
+table.yoochart-table-alizarin.yoochart-table-hover > tbody > tr:hover > td {
+  background-color: #f29f97;
+  /* to overwrite bs 3 .table-hover. */
+}
+table.yoochart-table-alizarin.yoochart-table-hover > tbody > tr:hover > td:first-child {
+  border-left: 1px solid #f29f97;
+  /* the border darkens to the color of the hover. */
+}
+table.yoochart-table-alizarin.yoochart-table-hover.yoochart-table-bordered > tbody > tr:hover > td:first-child {
+  border-left: 1px solid #e74c3c;
+  /* the border darkens to the color of the hover. */
+}
+table.yoochart-table-alizarin.yoochart-table-bordered {
+  border: 1px solid #e74c3c;
+}
+table.yoochart-table-alizarin.yoochart-table-bordered tbody > tr:last-child > td {
+  border-bottom: 1px solid #e74c3c;
+}
+table.yoochart-table-sun-flower > thead > tr {
+  /*
+            th:nth-child(1),
+            td:nth-child(1) {
+              border-left: 1px solid @x;
+            }*/
+}
+table.yoochart-table-sun-flower > thead > tr th,
+table.yoochart-table-sun-flower > thead > tr td {
+  color: white;
+  /* added, same method as .table-striped/.table-hover to colorize the background. */
+  background-color: #f1c40f;
+  border: 1px solid #f1c40f;
+  text-align: center;
+}
+table.yoochart-table-sun-flower > tbody > tr:nth-child(1n + 2) > td {
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+}
+table.yoochart-table-sun-flower.yoochart-table-expanded > thead > tr > th,
+table.yoochart-table-sun-flower.yoochart-table-expanded > tbody > tr > th,
+table.yoochart-table-sun-flower.yoochart-table-expanded > tfoot > tr > th,
+table.yoochart-table-sun-flower.yoochart-table-expanded > thead > tr > td,
+table.yoochart-table-sun-flower.yoochart-table-expanded > tbody > tr > td,
+table.yoochart-table-sun-flower.yoochart-table-expanded > tfoot > tr > td {
+  padding: 12px;
+}
+table.yoochart-table-sun-flower.yoochart-table-column-border-on > tbody > tr > td:nth-child(1n + 2) {
+  border-left: 1px solid #f1c40f;
+  border-right: 1px solid #f1c40f;
+}
+table.yoochart-table-sun-flower.yoochart-table-column-border-on > tbody > tr > td:last-child {
+  border-right: 1px solid transparent;
+}
+table.yoochart-table-sun-flower.yoochart-table-column-border-on.yoochart-table-bordered > tbody > tr > td:last-child {
+  border-right: 1px solid #f1c40f;
+}
+table.yoochart-table-sun-flower.yoochart-table-column-border-on:not(*:root) > tbody > tr > th + th,
+table.yoochart-table-sun-flower.yoochart-table-column-border-on:not(*:root) > tfoot > tr > th + th,
+table.yoochart-table-sun-flower.yoochart-table-column-border-on:not(*:root) > tbody > tr > td + td,
+table.yoochart-table-sun-flower.yoochart-table-column-border-on:not(*:root) > tfoot > tr > td + td {
+  padding-left: 7px;
+}
+table.yoochart-table-sun-flower.yoochart-table-column-border-on.yoochart-table-expanded:not(*:root) > tbody > tr > th + th,
+table.yoochart-table-sun-flower.yoochart-table-column-border-on.yoochart-table-expanded:not(*:root) > tfoot > tr > th + th,
+table.yoochart-table-sun-flower.yoochart-table-column-border-on.yoochart-table-expanded:not(*:root) > tbody > tr > td + td,
+table.yoochart-table-sun-flower.yoochart-table-column-border-on.yoochart-table-expanded:not(*:root) > tfoot > tr > td + td {
+  padding-left: 11px;
+}
+table.yoochart-table-sun-flower.yoochart-table-line-border-on > tbody > tr:nth-child(1n + 2) > td {
+  border-top: 1px solid #f1c40f;
+  border-bottom: 1px solid #f1c40f;
+}
+table.yoochart-table-sun-flower.yoochart-table-line-border-on > tbody > tr:last-child > td {
+  border-bottom: 1px solid transparent;
+}
+table.yoochart-table-sun-flower.yoochart-table-line-border-on.yoochart-table-bordered > tbody > tr:last-child > td {
+  border-bottom: 1px solid #f1c40f;
+}
+table.yoochart-table-sun-flower.yoochart-table-striped > tbody > tr:nth-child(odd) > td {
+  background-color: #faecb0;
+}
+table.yoochart-table-sun-flower.yoochart-table-striped > tbody > tr:nth-child(odd) > td:first-child {
+  border-left: 1px solid #faecb0;
+}
+table.yoochart-table-sun-flower.yoochart-table-striped.yoochart-table-bordered > tbody > tr:nth-child(odd) > td:first-child {
+  border-left: 1px solid #f1c40f;
+}
+table.yoochart-table-sun-flower.yoochart-table-striped.yoochart-table-bordered > tbody > tr:last-child > td {
+  border-bottom: 1px solid #f1c40f;
+}
+table.yoochart-table-sun-flower.yoochart-table-hover > tbody > tr:hover > td {
+  background-color: #f7dc6f;
+  /* to overwrite bs 3 .table-hover. */
+}
+table.yoochart-table-sun-flower.yoochart-table-hover > tbody > tr:hover > td:first-child {
+  border-left: 1px solid #f7dc6f;
+  /* the border darkens to the color of the hover. */
+}
+table.yoochart-table-sun-flower.yoochart-table-hover.yoochart-table-bordered > tbody > tr:hover > td:first-child {
+  border-left: 1px solid #f1c40f;
+  /* the border darkens to the color of the hover. */
+}
+table.yoochart-table-sun-flower.yoochart-table-bordered {
+  border: 1px solid #f1c40f;
+}
+table.yoochart-table-sun-flower.yoochart-table-bordered tbody > tr:last-child > td {
+  border-bottom: 1px solid #f1c40f;
+}
+table.yoochart-table-emerald > thead > tr {
+  /*
+            th:nth-child(1),
+            td:nth-child(1) {
+              border-left: 1px solid @x;
+            }*/
+}
+table.yoochart-table-emerald > thead > tr th,
+table.yoochart-table-emerald > thead > tr td {
+  color: white;
+  /* added, same method as .table-striped/.table-hover to colorize the background. */
+  background-color: #2ecc71;
+  border: 1px solid #2ecc71;
+  text-align: center;
+}
+table.yoochart-table-emerald > tbody > tr:nth-child(1n + 2) > td {
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+}
+table.yoochart-table-emerald.yoochart-table-expanded > thead > tr > th,
+table.yoochart-table-emerald.yoochart-table-expanded > tbody > tr > th,
+table.yoochart-table-emerald.yoochart-table-expanded > tfoot > tr > th,
+table.yoochart-table-emerald.yoochart-table-expanded > thead > tr > td,
+table.yoochart-table-emerald.yoochart-table-expanded > tbody > tr > td,
+table.yoochart-table-emerald.yoochart-table-expanded > tfoot > tr > td {
+  padding: 12px;
+}
+table.yoochart-table-emerald.yoochart-table-column-border-on > tbody > tr > td:nth-child(1n + 2) {
+  border-left: 1px solid #2ecc71;
+  border-right: 1px solid #2ecc71;
+}
+table.yoochart-table-emerald.yoochart-table-column-border-on > tbody > tr > td:last-child {
+  border-right: 1px solid transparent;
+}
+table.yoochart-table-emerald.yoochart-table-column-border-on.yoochart-table-bordered > tbody > tr > td:last-child {
+  border-right: 1px solid #2ecc71;
+}
+table.yoochart-table-emerald.yoochart-table-column-border-on:not(*:root) > tbody > tr > th + th,
+table.yoochart-table-emerald.yoochart-table-column-border-on:not(*:root) > tfoot > tr > th + th,
+table.yoochart-table-emerald.yoochart-table-column-border-on:not(*:root) > tbody > tr > td + td,
+table.yoochart-table-emerald.yoochart-table-column-border-on:not(*:root) > tfoot > tr > td + td {
+  padding-left: 7px;
+}
+table.yoochart-table-emerald.yoochart-table-column-border-on.yoochart-table-expanded:not(*:root) > tbody > tr > th + th,
+table.yoochart-table-emerald.yoochart-table-column-border-on.yoochart-table-expanded:not(*:root) > tfoot > tr > th + th,
+table.yoochart-table-emerald.yoochart-table-column-border-on.yoochart-table-expanded:not(*:root) > tbody > tr > td + td,
+table.yoochart-table-emerald.yoochart-table-column-border-on.yoochart-table-expanded:not(*:root) > tfoot > tr > td + td {
+  padding-left: 11px;
+}
+table.yoochart-table-emerald.yoochart-table-line-border-on > tbody > tr:nth-child(1n + 2) > td {
+  border-top: 1px solid #2ecc71;
+  border-bottom: 1px solid #2ecc71;
+}
+table.yoochart-table-emerald.yoochart-table-line-border-on > tbody > tr:last-child > td {
+  border-bottom: 1px solid transparent;
+}
+table.yoochart-table-emerald.yoochart-table-line-border-on.yoochart-table-bordered > tbody > tr:last-child > td {
+  border-bottom: 1px solid #2ecc71;
+}
+table.yoochart-table-emerald.yoochart-table-striped > tbody > tr:nth-child(odd) > td {
+  background-color: #b6efce;
+}
+table.yoochart-table-emerald.yoochart-table-striped > tbody > tr:nth-child(odd) > td:first-child {
+  border-left: 1px solid #b6efce;
+}
+table.yoochart-table-emerald.yoochart-table-striped.yoochart-table-bordered > tbody > tr:nth-child(odd) > td:first-child {
+  border-left: 1px solid #2ecc71;
+}
+table.yoochart-table-emerald.yoochart-table-striped.yoochart-table-bordered > tbody > tr:last-child > td {
+  border-bottom: 1px solid #2ecc71;
+}
+table.yoochart-table-emerald.yoochart-table-hover > tbody > tr:hover > td {
+  background-color: #7ee2a8;
+  /* to overwrite bs 3 .table-hover. */
+}
+table.yoochart-table-emerald.yoochart-table-hover > tbody > tr:hover > td:first-child {
+  border-left: 1px solid #7ee2a8;
+  /* the border darkens to the color of the hover. */
+}
+table.yoochart-table-emerald.yoochart-table-hover.yoochart-table-bordered > tbody > tr:hover > td:first-child {
+  border-left: 1px solid #2ecc71;
+  /* the border darkens to the color of the hover. */
+}
+table.yoochart-table-emerald.yoochart-table-bordered {
+  border: 1px solid #2ecc71;
+}
+table.yoochart-table-emerald.yoochart-table-bordered tbody > tr:last-child > td {
+  border-bottom: 1px solid #2ecc71;
+}
+table.yoochart-table-carrot > thead > tr {
+  /*
+            th:nth-child(1),
+            td:nth-child(1) {
+              border-left: 1px solid @x;
+            }*/
+}
+table.yoochart-table-carrot > thead > tr th,
+table.yoochart-table-carrot > thead > tr td {
+  color: white;
+  /* added, same method as .table-striped/.table-hover to colorize the background. */
+  background-color: #e67e22;
+  border: 1px solid #e67e22;
+  text-align: center;
+}
+table.yoochart-table-carrot > tbody > tr:nth-child(1n + 2) > td {
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+}
+table.yoochart-table-carrot.yoochart-table-expanded > thead > tr > th,
+table.yoochart-table-carrot.yoochart-table-expanded > tbody > tr > th,
+table.yoochart-table-carrot.yoochart-table-expanded > tfoot > tr > th,
+table.yoochart-table-carrot.yoochart-table-expanded > thead > tr > td,
+table.yoochart-table-carrot.yoochart-table-expanded > tbody > tr > td,
+table.yoochart-table-carrot.yoochart-table-expanded > tfoot > tr > td {
+  padding: 12px;
+}
+table.yoochart-table-carrot.yoochart-table-column-border-on > tbody > tr > td:nth-child(1n + 2) {
+  border-left: 1px solid #e67e22;
+  border-right: 1px solid #e67e22;
+}
+table.yoochart-table-carrot.yoochart-table-column-border-on > tbody > tr > td:last-child {
+  border-right: 1px solid transparent;
+}
+table.yoochart-table-carrot.yoochart-table-column-border-on.yoochart-table-bordered > tbody > tr > td:last-child {
+  border-right: 1px solid #e67e22;
+}
+table.yoochart-table-carrot.yoochart-table-column-border-on:not(*:root) > tbody > tr > th + th,
+table.yoochart-table-carrot.yoochart-table-column-border-on:not(*:root) > tfoot > tr > th + th,
+table.yoochart-table-carrot.yoochart-table-column-border-on:not(*:root) > tbody > tr > td + td,
+table.yoochart-table-carrot.yoochart-table-column-border-on:not(*:root) > tfoot > tr > td + td {
+  padding-left: 7px;
+}
+table.yoochart-table-carrot.yoochart-table-column-border-on.yoochart-table-expanded:not(*:root) > tbody > tr > th + th,
+table.yoochart-table-carrot.yoochart-table-column-border-on.yoochart-table-expanded:not(*:root) > tfoot > tr > th + th,
+table.yoochart-table-carrot.yoochart-table-column-border-on.yoochart-table-expanded:not(*:root) > tbody > tr > td + td,
+table.yoochart-table-carrot.yoochart-table-column-border-on.yoochart-table-expanded:not(*:root) > tfoot > tr > td + td {
+  padding-left: 11px;
+}
+table.yoochart-table-carrot.yoochart-table-line-border-on > tbody > tr:nth-child(1n + 2) > td {
+  border-top: 1px solid #e67e22;
+  border-bottom: 1px solid #e67e22;
+}
+table.yoochart-table-carrot.yoochart-table-line-border-on > tbody > tr:last-child > td {
+  border-bottom: 1px solid transparent;
+}
+table.yoochart-table-carrot.yoochart-table-line-border-on.yoochart-table-bordered > tbody > tr:last-child > td {
+  border-bottom: 1px solid #e67e22;
+}
+table.yoochart-table-carrot.yoochart-table-striped > tbody > tr:nth-child(odd) > td {
+  background-color: #f7d8bb;
+}
+table.yoochart-table-carrot.yoochart-table-striped > tbody > tr:nth-child(odd) > td:first-child {
+  border-left: 1px solid #f7d8bb;
+}
+table.yoochart-table-carrot.yoochart-table-striped.yoochart-table-bordered > tbody > tr:nth-child(odd) > td:first-child {
+  border-left: 1px solid #e67e22;
+}
+table.yoochart-table-carrot.yoochart-table-striped.yoochart-table-bordered > tbody > tr:last-child > td {
+  border-bottom: 1px solid #e67e22;
+}
+table.yoochart-table-carrot.yoochart-table-hover > tbody > tr:hover > td {
+  background-color: #f0b37e;
+  /* to overwrite bs 3 .table-hover. */
+}
+table.yoochart-table-carrot.yoochart-table-hover > tbody > tr:hover > td:first-child {
+  border-left: 1px solid #f0b37e;
+  /* the border darkens to the color of the hover. */
+}
+table.yoochart-table-carrot.yoochart-table-hover.yoochart-table-bordered > tbody > tr:hover > td:first-child {
+  border-left: 1px solid #e67e22;
+  /* the border darkens to the color of the hover. */
+}
+table.yoochart-table-carrot.yoochart-table-bordered {
+  border: 1px solid #e67e22;
+}
+table.yoochart-table-carrot.yoochart-table-bordered tbody > tr:last-child > td {
+  border-bottom: 1px solid #e67e22;
+}
+
+
+</style>
+</head>
+
+<body>
+    <div class="row">
+        <div class="col-xs-offset-1 col-xs-10">
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="box">
+                        <table id="table1" class="yoochart-table yoochart-table-expanded">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Test
+                                    </th>
+                                    <th>
+                                        Test
+                                    </th>
+                                    <th>
+                                        Test
+                                    </th>
+                                    <th>
+                                        Test
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        Test
+                                    </td>
+                                    <td>
+                                        Test
+                                    </td>
+                                    <td>
+                                        Test
+                                    </td>
+                                    <td>
+                                        Test
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Test
+                                    </td>
+                                    <td>
+                                        Test
+                                    </td>
+                                    <td>
+                                        Test
+                                    </td>
+                                    <td>
+                                        Test
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Test
+                                    </td>
+                                    <td>
+                                        Test
+                                    </td>
+                                    <td>
+                                        Test
+                                    </td>
+                                    <td>
+                                        Test
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="box">
+                        <table id="table2" class="yoochart-table yoochart-table-expanded">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Test
+                                    </th>
+                                    <th>
+                                        Test
+                                    </th>
+                                    <th>
+                                        Test
+                                    </th>
+                                    <th>
+                                        Test
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        Test
+                                    </td>
+                                    <td>
+                                        Test
+                                    </td>
+                                    <td>
+                                        Test
+                                    </td>
+                                    <td>
+                                        Test
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Test
+                                    </td>
+                                    <td>
+                                        Test
+                                    </td>
+                                    <td>
+                                        Test
+                                    </td>
+                                    <td>
+                                        Test
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Test
+                                    </td>
+                                    <td>
+                                        Test
+                                    </td>
+                                    <td>
+                                        Test
+                                    </td>
+                                    <td>
+                                        Test
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">
+                	<div class="box">
+                        <label>
+                            <input type="checkbox" id="expanded1" name="expanded1">
+                            Expanded
+                        </label>
+                        <br>
+                        <br>
+                        <label>
+                            <input type="radio" id="color1-1" name="color1" value="1"> yoochart-table-peter-river
+                        </label>
+                        <br>
+                        <label>
+                            <input type="radio" id="color1-2" name="color1" value="2"> yoochart-table-alizarin
+                        </label>
+                        <br> 
+                        <label>
+                            <input type="radio" id="color1-3" name="color1" value="3"> yoochart-table-sun-flower
+                        </label>
+                        <br>
+                        <label>
+                            <input type="radio" id="color1-4" name="color1" value="4"> yoochart-table-emerald
+                        </label>
+                        <br>
+                        <label>
+                            <input type="radio" id="color1-5" name="color1" value="5"> yoochart-table-carrot
+                        </label>
+                        <br>
+                        <label>
+                            <input type="radio" id="color1-6" name="color1" value="6"> yoochart-table-wet-asphalt
+                        </label>
+                        <br>
+                        <br>
+                        <label>
+                            <input type="checkbox" id="striped1" name="striped1">
+                            Striped
+                        </label>
+                        <br>
+                        <label>
+                            <input type="checkbox" id="bordered1" name="bordered1">
+                            Bordered
+                        </label>
+                        <br>                    
+                        <label>
+                            <input type="checkbox" id="hover1" name="hover1">
+                            Hover
+                        </label>
+                        <br> 
+                        <label>
+                            <input type="checkbox" id="column1" name="column1">
+                            Column
+                        </label>
+                        <br> 
+                        <label>
+                            <input type="checkbox" id="line1" name="line1">
+                            Line
+                        </label>
+                        <br>
+
+                  </div>
+                </div>
+                
+                <div class="col-xs-6">
+                	<div class="box">
+                        <label>
+                            <input type="checkbox" id="expanded2" name="expanded2">
+                            Expanded
+                        </label>
+                        <br>
+                        <br>
+                        <label>
+                            <input type="radio" id="color2-1" name="color2" value="1"> yoochart-table-peter-river
+                        </label>
+                        <br>
+                        <label>
+                            <input type="radio" id="color2-2" name="color2" value="2"> yoochart-table-alizarin
+                        </label>
+                        <br> 
+                        <label>
+                            <input type="radio" id="color2-3" name="color2" value="3"> yoochart-table-sun-flower
+                        </label>
+                        <br>
+                        <label>
+                            <input type="radio" id="color2-4" name="color2" value="4"> yoochart-table-emerald
+                        </label>
+                        <br>
+                        <label>
+                            <input type="radio" id="color2-5" name="color2" value="5"> yoochart-table-carrot
+                        </label>
+                        <br>
+                        <label>
+                            <input type="radio" id="color2-6" name="color2" value="6"> yoochart-table-wet-asphalt
+                        </label>
+                        <br>
+                        <br>
+                        <label>
+                            <input type="checkbox" id="striped2" name="striped2">
+                            Striped
+                        </label>
+                        <br>
+                        <label>
+                            <input type="checkbox" id="bordered2" name="bordered2">
+                            Bordered
+                        </label>
+                        <br>                    
+                        <label>
+                            <input type="checkbox" id="hover2" name="hover2">
+                            Hover
+                        </label>
+                        <br> 
+                        <label>
+                            <input type="checkbox" id="column2" name="column2">
+                            Column
+                        </label>
+                        <br> 
+                        <label>
+                            <input type="checkbox" id="line2" name="line2">
+                            Line
+                        </label>
+                        <br>
+
+                  </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <script>
+
+    (function() {
+	    var striped1 = Math.round( Math.random() );
+	    var bordered1 = Math.round( Math.random() );
+	    var hover1 = Math.round( Math.random() );
+	    var color1 = 1 + Math.round( Math.random() * 5 - 1);
+	    var column1 = Math.round( Math.random() );
+	    var line1 = Math.round( Math.random() );
+
+        var expanded1 = 1;
+    /*
+      console.log(striped1);
+      console.log(bordered1);
+      console.log(hover1);
+      console.log(column1);
+      console.log(line1);
+    
+
+      console.log(color1);
+
+    */
+
+	    var striped2 = Math.round( Math.random() );
+	    var bordered2 = Math.round( Math.random() );
+	    var hover2 = Math.round( Math.random() );
+	    var color2 = 1 + Math.round( Math.random() * 5 - 1);
+	    var column2 = Math.round( Math.random() );
+	    var line2 = Math.round( Math.random() );
+
+        var expanded2 = 1;
+
+	    var colorList = [ 
+	    					"yoochart-table-peter-river",
+	    					"yoochart-table-alizarin",
+	    					"yoochart-table-sun-flower",
+	    					"yoochart-table-emerald",
+	    					"yoochart-table-carrot",
+	    					"yoochart-table-wet-asphalt",
+	    					 ];
+
+		var element1 = document.getElementById("table1");
+		var element2 = document.getElementById("table2");
+
+        document.getElementById("striped1").checked = false;
+        document.getElementById("bordered1").checked = false;
+        document.getElementById("hover1").checked = false;
+        document.getElementById("column1").checked = false;
+        document.getElementById("line1").checked = false;
+        document.getElementById("expanded1").checked = true;
+
+        document.getElementById("striped2").checked = false;
+        document.getElementById("bordered2").checked = false;
+        document.getElementById("hover2").checked = false;
+        document.getElementById("column2").checked = false;
+        document.getElementById("line2").checked = false;
+        document.getElementById("expanded2").checked = true;
+
+
+
+		if (striped1 === 1) {
+			element1.classList.add("yoochart-table-striped");
+            document.getElementById("striped1").checked = true;
+		}
+		if (striped2 === 1) {
+			element2.classList.add("yoochart-table-striped");
+            document.getElementById("striped2").checked = true;
+		}
+
+		if (bordered1 === 1) {
+			element1.classList.add("yoochart-table-bordered");
+            document.getElementById("bordered1").checked = true;
+		}
+		if (bordered2 === 1) {
+			element2.classList.add("yoochart-table-bordered");
+            document.getElementById("bordered2").checked = true;
+		}
+
+		if (hover1 === 1) {
+			element1.classList.add("yoochart-table-hover");
+            document.getElementById("hover1").checked = true;
+		}
+		if (hover2 === 1) {
+			element2.classList.add("yoochart-table-hover");
+            document.getElementById("hover2").checked = true;
+		}
+
+		if (column1 === 1) {
+			element1.classList.add("yoochart-table-column-border-on");
+            document.getElementById("column1").checked = true;
+		}
+		if (column2 === 1) {
+			element2.classList.add("yoochart-table-column-border-on");
+            document.getElementById("column2").checked = true;
+		}
+
+		if (line1 === 1) {
+			element1.classList.add("yoochart-table-line-border-on");
+            document.getElementById("line1").checked = true;
+		}
+		if (line2 === 1) {
+			element2.classList.add("yoochart-table-line-border-on");
+            document.getElementById("line2").checked = true;
+		}
+
+        var initialColor1 = colorList[color1];
+        var initialColor2 = colorList[color2];
+
+		element1.classList.add( initialColor1 );
+		element2.classList.add( initialColor2 );
+
+        if (color1 === 0) {
+            document.getElementById('color1-1').checked = true
+        } 
+        else if (color1 === 1) {
+            document.getElementById('color1-2').checked = true
+        }
+        else if (color1 === 2) {
+            document.getElementById('color1-3').checked = true
+        }
+        else if (color1 === 3) {
+            document.getElementById('color1-4').checked = true
+        }
+        else if (color1 === 4) {
+            document.getElementById('color1-5').checked = true
+        }
+        else if (color1 === 5) {
+            document.getElementById('color1-6').checked = true
+        }
+
+        if (color2 === 0) {
+            document.getElementById('color2-1').checked = true
+        } 
+        else if (color2 === 1) {
+            document.getElementById('color2-2').checked = true
+        }
+        else if (color2 === 2) {
+            document.getElementById('color2-3').checked = true
+        }
+        else if (color2 === 3) {
+            document.getElementById('color2-4').checked = true
+        }
+        else if (color2 === 4) {
+            document.getElementById('color2-5').checked = true
+        }
+        else if (color2 === 5) {
+            document.getElementById('color2-6').checked = true
+        }
+        
+        // document.getElementsByName('color2')
+
+    function modifieTableau(event, targetTableId) {
+      var targetElement = event.target || event.srcElement;
+
+      console.log(targetElement);
+
+      if (targetElement.checked === true) {
+
+        var classToAdd;
+
+        if (targetElement.id === "striped1" || targetElement.id === "striped2") {
+          classToAdd = "yoochart-table-striped";
+        } 
+        else if (targetElement.id === "bordered1" || targetElement.id === "bordered2") {
+          classToAdd = "yoochart-table-bordered";
+        }
+        else if (targetElement.id === "hover1" || targetElement.id === "hover2") {
+          classToAdd = "yoochart-table-hover";
+        }
+        else if (targetElement.id === "column1" || targetElement.id === "column2") {
+          classToAdd = "yoochart-table-column-border-on";
+        }
+        else if (targetElement.id === "line1" || targetElement.id === "line2") {
+          classToAdd = "yoochart-table-line-border-on";
+        }
+        else if (targetElement.id === "expanded1" || targetElement.id === "expanded2") {
+          classToAdd = "yoochart-table-expanded";
+        }
+
+        document.getElementById(targetTableId).classList.add(classToAdd);
+
+      } else {
+
+        var classToRemove;
+        if (targetElement.id === "striped1" || targetElement.id === "striped2") {
+          classToRemove = "yoochart-table-striped";
+        } 
+        else if (targetElement.id === "bordered1" || targetElement.id === "bordered2") {
+          classToRemove = "yoochart-table-bordered";
+        }
+        else if (targetElement.id === "hover1" || targetElement.id === "hover2") {
+          classToRemove = "yoochart-table-hover";
+        }
+        else if (targetElement.id === "column1" || targetElement.id === "column2") {
+          classToRemove = "yoochart-table-column-border-on";
+        }
+        else if (targetElement.id === "line1" || targetElement.id === "line2") {
+          classToRemove = "yoochart-table-line-border-on";
+        }
+        else if (targetElement.id === "expanded1" || targetElement.id === "expanded2") {
+          classToRemove = "yoochart-table-expanded";
+        }
+
+        document.getElementById(targetTableId).classList.remove(classToRemove);
+
+      }
+    }
+
+    document.getElementById("striped1").addEventListener("change", function (event) { modifieTableau(event, 'table1'); }, false);
+    document.getElementById("bordered1").addEventListener("change", function (event) { modifieTableau(event, 'table1'); }, false);
+    document.getElementById("hover1").addEventListener("change", function (event) { modifieTableau(event, 'table1'); }, false);
+    document.getElementById("column1").addEventListener("change", function (event) { modifieTableau(event, 'table1'); }, false);
+    document.getElementById("line1").addEventListener("change", function (event) { modifieTableau(event, 'table1'); }, false);
+    document.getElementById("expanded1").addEventListener("change", function (event) { modifieTableau(event, 'table1'); }, false);
+
+    document.getElementById("striped2").addEventListener("change", function (event) { modifieTableau(event, 'table2'); }, false);
+    document.getElementById("bordered2").addEventListener("change", function (event) { modifieTableau(event, 'table2'); }, false);
+    document.getElementById("hover2").addEventListener("change", function (event) { modifieTableau(event, 'table2'); }, false);
+    document.getElementById("column2").addEventListener("change", function (event) { modifieTableau(event, 'table2'); }, false);
+    document.getElementById("line2").addEventListener("change", function (event) { modifieTableau(event, 'table2'); }, false);
+    document.getElementById("expanded2").addEventListener("change", function (event) { modifieTableau(event, 'table2'); }, false);
+
+    function modifieTableau2(event, targetTableId) {
+        var targetElement = event.target || event.srcElement;
+
+        console.log(targetElement);
+
+        // 05/02/2017 - Helper: targetElement.checked retourne toujours true
+
+        if (targetTableId === "table1") {
+            document.getElementById(targetTableId).classList.remove(initialColor1);
+            initialColor1 = colorList[targetElement.value - 1];
+            element1.classList.add( initialColor1 );
+
+        }   
+        else if (targetTableId === "table2") {
+            document.getElementById(targetTableId).classList.remove(initialColor2);
+            initialColor2 = colorList[targetElement.value - 1];
+            element2.classList.add( initialColor2 );
+        }
+
+        
+
+    }
+
+    var radioInput1 =  document.getElementsByName("color1");
+    var radioInput2 =  document.getElementsByName("color2");
+
+    for (i = 0; i < radioInput1.length; i++)
+    {
+        radioInput1[i].addEventListener("change", function (event) { modifieTableau2(event, 'table1'); }, false);
+    }
+
+    for (i = 0; i < radioInput2.length; i++)
+    {
+        radioInput2[i].addEventListener("change", function (event) { modifieTableau2(event, 'table2'); }, false);
+    }
+
+
+
+    })()
+
+
+    </script>
+</body>
+
+</html>
