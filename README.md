@@ -64,7 +64,7 @@ bower install bootstrap-pretty-tables
 ```
 
 ##Changes
-0.1.1 : Added documentation in readme
+0.5.0 : Added documentation in readme
 
 0.1.0 : Initial release
 
