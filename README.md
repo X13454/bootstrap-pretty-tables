@@ -60,7 +60,7 @@ bower install bootstrap-pretty-tables
 ##CDN
 
 ```HTML
-<link rel="stylesheet" href="//cdn.jsdelivr.net/bootstrap.pretty-tables/0.1.1/bootstrap-pretty-tables.min.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/bootstrap.pretty-tables/0.5.0/bootstrap-pretty-tables.min.css">
 ```
 
 ##Changes
