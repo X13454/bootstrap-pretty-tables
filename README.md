@@ -57,13 +57,13 @@ Internal horizontal borders (optional): internal horizontal borders are displaye
 ## Bower
 bower install bootstrap-pretty-tables
 
-##CDN
+## CDN
 
 ```HTML
 <link rel="stylesheet" href="//cdn.jsdelivr.net/bootstrap.pretty-tables/0.5.0/bootstrap-pretty-tables.min.css">
 ```
 
-##Changes
+## Changes
 0.5.0 : Added documentation in readme
 
 0.1.0 : Initial release
